@@ -1,0 +1,27 @@
+E-> T Ep;
+Ep -> or T Ep|epsilon;
+T->C Tp;
+Tp -> conc C Tp|epsilon;
+C->F Cp;
+Cp -> F Cp;
+Cp->CerrPos Cp | CerrKleen Cp | Opc Cp | epsilon;
+F -> ParIzq E ParDer| simb|CorchIzq simb guion simb CorchDer;
+
+E-> T Ep;
+Ep -> mas T Ep| menos T Ep|epsilon;
+T-> F Tp;
+Tp -> multi F Tp| div F Tp |epsilon;
+F -> ParIzq E ParDer|num;
+
+Ep -> E;
+E-> E mas T| E menos T|T;
+T-> T multi F| T div F| F;
+F-> parIzq E parDer|num;
+
+E-> T Ep;
+Ep-> mas T Ep| menos T Ep | epsilon;
+T-> F Tp;
+Tp -> multi F Tp | div F Tp | epsilon;
+F-> parIzq E parDer | sin parIzq E parDer | num;
+
+2.42*(87-sin(14/12))

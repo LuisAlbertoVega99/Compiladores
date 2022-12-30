@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="FileSaver.js"></script>
+    <title>Analizador léxico</title>
+</head>
+</style>
+<body>
+    <form class="content">
+        <div class="caja_opc">
+            <div class="opcionAFN boton_opc" onclick="mostrarbarra();">AFN</div>
+            <div class="boton_opc" onclick="analisissin();">Analizador Sintactico</div>
+        </div>
+        <div class="crearAFN">
+            <div id="barra" class="barra">
+                <div class="opciones" onclick="mostrarbasico();">Básico</div>
+                <div class="opciones" onclick="mostrarunion();">Unir</div>
+                <div class="opciones" onclick="mostrarconca();">Concatenar</div>
+                <div class="opciones" onclick="mostrarcerratrans();">Cerradura +</div>
+                <div class="opciones" onclick="mostrarcerraeps();">Cerradura *</div>
+                <div class="opciones" onclick="mostraropc();">Opcional</div>
+                <div class="opciones" onclick="ER_AFN();">ER->AFN</div>
+                <div class="opciones" onclick="unionlexico();">Union para analizador lexico</div>
+                <div class="opciones" onclick="mostrarafd();">AFN a AFD</div>
+                <div class="opciones">Analizar cadena</div>
+                <div class="opciones" onclick="pruebalex();">Probar A. léxico</div>
+            </div>
+
+            <div class="AFN_basico" id="AFN_basico" name="form">
+                <label class="opcion_basico">Caracter Inferior:   </label><input type="text" name="car_inf" id="car_inf" class="car_inf opcion_basico"><br>
+                <label class="opcion_basico">Caracter Superior:   </label><input type="text" name="car_sup" id="car_sup" class="car_sup opcion_basico">
+                <label class="opcion_basico">Id AFN:</label><input type="text" name="" id="id_afn" class="id_afn opcion_basico">
+                <div class="crearbasico opciones">Crear</div>
+                <div class="btn_regresar opciones" onclick="ocultarbarra();">Regresar</div>
+            </div>
+            <div class="union_AFN" id="union">
+                <label class="opcion_basico">Id AFN1:</label><input type="text" name="" id="opcion_union1" class="id_afn ">
+                <label class="opcion_basico">Id AFN2:</label><input type="text" name="" id="opcion_union2" class="id_afn">
+                <div class="crearunion opciones">Crear</div>
+                <div class="btn_regresar opciones" onclick="ocultarbarra();">Regresar</div>
+            </div>
+            <div class="conca_AFN" id="conca">
+                <label class="opcion_basico">Id AFN1:</label><input type="text" name="" id="opcion_conca1" class="id_afn ">
+                <label class="opcion_basico">Id AFN2:</label><input type="text" name="" id="opcion_conca2" class="id_afn ">
+                <div class="creaconca opciones">Crear</div>
+                <div class="btn_regresar opciones" onclick="ocultarbarra();">Regresar</div>
+            </div>
+            <div class="cerratrans" id="cerratrans">
+                <label class="opcion_trans">Id AFN:</label><input type="text" name="" id="opn_cerrpos" class="id_afn opcion_trans">
+                <div class="crearcerrtrans opciones">Crear</div>
+                <div class="btn_regresar opciones" onclick="ocultarbarra();">Regresar</div>
+            </div>
+            <div class="cerraeps" id="cerraeps">
+                <label class="opcion_eps">Id AFN:</label><input type="text" name="" id="opn_cerrkleen" class="id_afn">
+                <div class="crearcerrkleen opciones">Crear</div>
+                <div class="btn_regresar opciones" onclick="ocultarbarra();">Regresar</div>
+            </div>
+            <div class="opcional" id="opcional">
+                <label class="opcion_opc">Id AFN:</label><input type="text" name="" id="opnopn" class="id_afn opcion_opc">
+                <div class="crearopcional opciones">Crear</div>
+                <div class="btn_regresar opciones" onclick="ocultarbarra();">Regresar</div>
+            </div>
+            <div class="unionlexico" id ="unionespecial">
+                <div class="uneAFN opciones">Crear</div>
+                <div class="tabla">
+                    <table class="table">
+                        <tbody class="cuerpotabla">
+                            <tr>
+                                <th>Id AFN</th>
+                                <th>Seleccion</th>
+                                <th>Token</th>
+                            </tr>
+                        </tbody>    
+                        
+                    </table>
+                    <label class="opcion_basico">Id AFN:</label><input type="text" name="" id="id_afn" class="id_afn opcion_basico">
+                    <div class="unirafns opciones">Enviar</div>
+                    <div class="btn_regresar opciones" onclick="ocultarbarra();">Regresar</div>
+                </div>
+                
+            </div>
+            <div class="afntoafd" id="afntoafd">
+                <label class="opcion_trans" style="display: block;">Id AFN:</label><input type="text" name="" id="idafnafd" class=""><br>
+                <label class="opcion_trans" style="display: block;">Id AFD:</label><input type="text" name="" id="" class="">
+                <div class="afnaafd opciones">Crear</div>
+                <div class="tablaafd"></div>
+                <div class="btn_regresar opciones" onclick="ocultarbarra();">Regresar</div>
+            </div>
+            <div class="ertoafn" id ="ertoafn">
+                <input type="file" id = "files"style="display: block;"><br>
+                <label for="" style="display: block;">Id AFD</label><input type="text" id="IDAFD">
+                <label for="" style="display: block;">Escribe la expresión regular</label><br>
+                <input type="text" name="" id="expresionr">
+                <div class="opciones conversion">Crear</div>
+                
+                <div class="opciones" onclick="ocultarbarra();">Regresar</div>
+            </div>
+            <div class="pal" id="pal">
+                <label for="" style="display:block">Id del AFD a utilizar</label><input type="text" id="idAFD" style="display:block"><br>
+                <input type="file" name="inputFile" id="muestra" style="display:block"><br>
+                <label for="">Cadena a analizar:    </label><input type="text" class="expreeval" id="expreeval">
+                <div class=" opciones pruebaanalisislex" >Analizar</div>
+                <div class="tabla">
+                    <table class="" >
+                        <tr>
+                            <th>Lexema</th>
+                            <th>Token</th>
+                        </tr>
+                        <tbody class="tablalexico">
+                        </tbody>
+                        
+                        
+                    </table>
+                
+                </div>
+                <br>
+                <br>
+                <label for="" style="display:block">Nombre del AFD: </label><input type="text" id="nombreafd" style="display:block"><br>
+                <div class="opciones guardarafd">Guardar AFD</div>
+                <div class="btn_regresar opciones" onclick="ocultarbarra();">Regresar</div>
+            </div>
+        </div>
+        <div class="asintactico">
+            <div class="barrasintactico caja_opc" id="barrasintactico">
+                <div class="opciones" onclick="mostrarcalcu();">Calculadora</div>
+                <div class="opciones" onclick="analisisgramaticas();">Analisis LL(1)</div>
+                <div class="opciones" onclick="analisisLR0();">Analisis LR0</div>
+            </div>
+            <div class="calculadora" id="calculadora">
+                <input type="file" id = "afdcalculadora"style="display: block;"><br>
+                <label for="" style="display: block;">Id AFD</label><input type="text" id="IDAFD">
+                <label for="" style="display: block;">Escribe la </label><br>
+                <input type="text" name="" id="expresion_arit">
+                <label for="" style="display: block;">Expresion Postfija </label><br>
+                <label type="text" name="" id="Postfija"></label>
+                <label for="" style="display: block;">Valor</label><br>
+                <label type="text" name="" id="valor"></label>
+                <div class="opciones calcu">Crear</div>
+
+                
+                <div class="opciones" onclick="ocultarbarra();">Regresar</div>
+
+            </div>
+            <div class="gramaticas" id="gramaticas">
+                <div class="p1">
+                    <textarea name="" id="textogramatica" cols="30" rows="10"  class="textogramatica"></textarea>
+                    <div class="pruebagramatica">
+                        <label >Cadena a analizar</label>
+                        <div>
+                            <textarea name="" id="textoprueba" cols="30" rows="10"  class="textoprueba"></textarea>
+                        </div>
+                        
+                        <input type="file" name="" id="analizador_lexico" class="analizador_lexico">
+                        <div class="probarlexico opciones">Probar Léxico</div>
+                        <div class="opciones analiza_cadena">Analizar sintacticamente</div>
+                        <table class="pruebaanalisislexico">
+                            
+                        </table>
+                        
+                    </div>
+                </div>
+                <div class="p2">
+                    <input type="file" name="" id="gramaticasafd">
+                    <div class="opciones creatablall1" >Crear tabla</div>
+                    <div class="tablas">
+                </div>
+
+                </div>
+                <div class="opciones" onclick="ocultarbarra();">Regresar</div>
+                
+            </div>
+            <div class="LR0" id="LR0">
+                <textarea name="" id="textogramaticaLR0" cols="30" rows="10"  class="textogramaticaLR0"></textarea>
+                <input type="file" name="" id="gramaticasgram">
+                <div class="opciones creatablalr0" >Crear tabla</div>
+                <div class="tablas"></div>
+                <div class="opciones" onclick="ocultarbarra();">Regresar</div>
+            </div>
+        </div>
+    </form>
+    <script src="index.js"></script>
+    <script src="principal.js" type="module"></script>
+   
+    
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.content{
+    margin: auto;
+    width: 1000px;
+    
+}
+.boton_opc{
+    padding: 15px;
+    margin: 10px;
+    border-radius: 5px;
+}
+.boton_opc:hover{
+    color: white;
+    background-color: black;
+    cursor: pointer;
+
+}
+.caja_opc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    background-color: rgb(24, 198, 198);
+}
+
+.AFN_basico,.union_AFN, .conca_AFN,.cerratrans,.cerraeps,.opcional,.unionlexico,.afntoafd,.ertoafn,.pal,.calculadora,.gramaticas,.LR0{
+    margin: 10px;
+     border: 10px thin black;
+    display: flex;
+    flex-wrap: wrap;
+    display: none;
+   transition: 1s;
+}
+.boton_opc{
+    width: 150px;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+.barra,.barrasintactico{
+    display:flex;
+    align-items: center;
+    background-color: greenyellow;
+    flex-wrap: wrap;
+    display: none;
+}
+.opciones{
+    text-align: center;
+    width: 100px;
+    margin: 10px;
+    background-color: aquamarine;
+    border-radius: solid 15px;
+    padding: 7px;
+    
+}
+
+.opciones:hover{
+    background-color: black;
+    color:white;
+    cursor: pointer;
+    border-radius: 5px;
+    
+}
+.opcion_basico{
+    margin: 15px;
+}
+th,td,tr{
+    padding: 5px;
+    margin: 35px;
+    border-bottom: 1px solid;
+    border-right:1px solid ;
+}
+thead{
+    background:rgb(30, 187, 249);
+} 
+.tablaafd{
+    overflow-x: auto;
+}
+.tablaafd::-webkit-scrollbar{
+    width: 50px;
+}
+.tablaafd::-webkit-scrollbar-thumb{
+    background-color: black;
+    border-radius: 10px;
+}
+.textogramatica{
+    width: 350px;
+    height: 150px;
+    margin: 10px;
+    display: block;
+}
+.gramaticas{
+    padding: 10px;
+}
+.tablas{
+    display: flex;
+}
+table{
+    display: inline-block;
+    padding: 10px;
+}
+.p1{
+    display: flex;
+    width: 80%;
+}
+.p2{
+    width: 40%;
+}
+.p1 .opciones{
+    width: 150px;
+    height: 50px;
+}
+.textoprueba{
+    width: 200px;
+    height: 75px;
+}
+.pruebagramatica{
+    width: 450px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: aliceblue;
+}
+.tablas{
+    width: 100%;
+}
